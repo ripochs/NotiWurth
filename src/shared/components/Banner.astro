@@ -1,0 +1,55 @@
+---
+import { Banners } from "@shared/consts/banner";
+import "swiper/css";
+import "swiper/css/navigation";
+
+const banners = Banners
+---
+
+<!-- Contenedor principal de Swiper -->
+<div class="mt-24" id="home">
+  <div class="swiper">
+    <div class="swiper-wrapper">
+
+      {
+        banners.map((banner) => (
+          <div class="swiper-slide">
+            <img src={banner.image} alt={banner.description} />
+          </div>
+        ))
+      }
+
+    </div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+  </div>
+</div>
+
+<style>
+  .swiper-slide {
+    height: 600px;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .swiper-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+</style>
+
+<script>
+  import Swiper from "swiper";
+  import { Navigation } from "swiper/modules";
+
+  const swiper = new Swiper(".swiper", {
+    modules: [Navigation],
+    loop: true,
+    slidesPerView: 1,
+    spaceBetween: 40,
+    navigation: {
+      prevEl: ".swiper-button-prev",
+      nextEl: ".swiper-button-next",
+    },
+  });
+</script>

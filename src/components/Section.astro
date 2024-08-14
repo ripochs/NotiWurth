@@ -1,0 +1,108 @@
+---
+//import type { IBrochure } from "../consts/brochure";
+import type { IBrochure } from '@shared/interfaces';
+type ItemsAlign = "center" | "left" | "right";
+
+interface Props {
+  id?: string;
+  title?: string;
+  subtitle?: string;
+  description?: string;
+  items?: IBrochure[];
+  itemsAlign?: ItemsAlign;
+  background?: string;
+  small?: boolean;
+  removeBottom?: boolean;
+  removeTop?: boolean;
+  showButton?: boolean;
+  textButton?: string;
+
+}
+
+const {
+  id = null,
+  title = null,
+  subtitle = null,
+  description = null,
+  items = null,
+  itemsAlign = "center",
+  background = "#ffffff",
+  small = false,
+  removeBottom = false,
+  removeTop = false,
+  showButton = false,
+} = Astro.props;
+---
+
+<section
+  id={id ? id : undefined}
+  style={{
+    backgroundColor: background,
+    paddingBottom: removeBottom ? "0!important" : null,
+    paddingTop: removeTop ? "0!important" : null,
+  }}
+>
+  <div class="container mx-auto w-full max-w-6xl">
+    <div class="head">
+      {
+        title && (
+          <h2 >
+            {title}
+            {subtitle && <span>{subtitle}</span>}
+          </h2>
+        )
+      }
+      {description && <p>{description}</p>}
+    </div>
+    <!-- Lista de brochure -->
+    {
+      items && (
+        <div
+          class="grid justify-items-center mx-auto gallery">
+          {items.map((item) => (
+            <div class=" py-2 text-center">
+              <img src={item.image} alt={item.title} class="img-gradient mx-auto"/>
+              {/* <p 
+              class="truncate overflow-hidden whitespace-nowrap w-full"
+              >{item.title}</p> */}
+              <p class="truncate sm:overflow-visible sm:whitespace-normal md:overflow-visible md:whitespace-normal lg:overflow-hidden lg:whitespace-nowrap">{item.title}</p>
+              {
+                showButton && (
+                  <a class="btn mx-auto" href={item.link} target="_blank">{item.textButton}</a>
+                )
+              }
+            </div>
+          ))}
+        </div>
+      )
+    }
+  </div>
+</section>
+<style>
+  section {
+    @apply py-16 bg-white;
+  }
+  section .head {
+    @apply mb-8;
+  }
+  section .gallery {
+    /* //@apply w-full grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-4; */
+    /* @apply grid gap-4 w-full grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6; */
+    @apply grid sm:grid-cols-2 md:grid-cols-3 gap-8 sm:px-5;
+  }
+  section .gallery img {
+    @apply w-auto object-cover;
+  }
+  section .gallery p {
+    @apply text-center my-2 uppercase;
+  }
+  h2{
+    @apply text-2xl lg:text-4xl text-center text-black uppercase;
+  }
+  h2 > span {
+    @apply text-red-600 uppercase;
+  }
+  p {
+    @apply text-black text-center;
+  }
+</style>

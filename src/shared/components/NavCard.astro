@@ -1,0 +1,51 @@
+---
+import { SiteMenu } from "@shared/consts";
+const menus = SiteMenu;
+---
+
+<nav>
+  <div
+    class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4"
+  >
+    <a
+      href="#"
+      class="flex items-center space-x-3 rtl:space-x-reverse"
+    >
+      <img src="https://notiwurth.com/images/logo.png" class="h-12 w-auto" />
+    </a>
+    <button
+      id="menu-toggle"
+      data-collapse-toggle="navbar-default"
+      type="button"
+      class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-white rounded-lg md:hidden bg-opacity-75 bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-2 focus:ring-red-800"
+      aria-controls="navbar-default"
+      aria-expanded="false"
+    >
+      <span class="sr-only">menu</span>
+      <i class="icon-interface-hamburger text-3xl"></i>
+    </button>
+    <div class="hidden w-full md:block md:w-auto" id="navbar-default">
+      <ul
+        class="
+        bg-white md:bg-transparent text-black md:text-white
+        font-medium flex flex-col p-4 md:p-0 mt-4 border rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0"
+      >
+        {
+          menus.map((menu) => (
+            <li class="p-2 md:p-0">
+              <a href={menu.anchor} class="">
+                {menu.title}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</nav>
+<script is:inline type="text/javascript">
+  document.getElementById("menu-toggle").addEventListener("click", () => {
+    const menu = document.getElementById("navbar-default");
+    menu.classList.toggle("hidden");
+  });
+</script>

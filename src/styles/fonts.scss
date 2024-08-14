@@ -1,0 +1,32 @@
+@font-face {
+    font-family: WuerthBook;
+    src: url("./fonts/wuerthbook_webfont3.woff2") format("woff2"),
+      url("./fonts/wuerthbook_webfont3.woff") format("woff");
+  
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+  
+  @font-face {
+    font-family: WuerthBold;
+    src: url("./fonts/wuerthbold_webfont3.woff2")
+        format("woff2"),
+      url("./fonts/wuerthbold_webfont3.woff") format("woff");
+  
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+  
+  @font-face {
+    font-family: WuerthExtraBoldCond;
+    src: url("./fonts/wuerthextraboldcond_webfont3.woff2")
+        format("woff2"),
+      url("./fonts/wuerthextraboldcond_webfont3.woff")
+        format("woff");
+  
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }

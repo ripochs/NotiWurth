@@ -1,0 +1,55 @@
+---
+type Style = "simple" | "fancy";
+interface Props {
+  id?: string;
+  style?: Style;
+  title: string;
+  subtitle?: string;
+  description?: string;
+}
+
+const {
+  id = null,
+  style = "simple",
+  title = null,
+  subtitle = null,
+  description = null,
+} = Astro.props;
+---
+
+<section
+  id={`${id}`}
+  class:list={[
+    {
+      simple: style === "simple",
+      fancy: style === "fancy",
+    },
+  ]}
+>
+  <div class="container mx-auto w-full max-w-6xl">
+    <h2>
+      {title}
+      {subtitle && <span>{subtitle}</span>}
+    </h2>
+    {description && <p class="text-center">{description}</p>}
+  </div>
+</section>
+<style>
+  section {
+    &.simple {
+      @apply py-20 bg-black;
+    }
+    &.fancy {
+      @apply py-20 bg-gradient-to-r from-red-500 to-red-700;
+    }
+    h2 {
+      @apply text-2xl lg:text-4xl font-bold text-center text-white uppercase;
+    }
+    h2 > span {
+      @apply text-red-600 uppercase;
+    }
+    p {
+      @apply text-white text-center text-base;
+    }
+  }
+</style>

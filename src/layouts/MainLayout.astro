@@ -1,0 +1,48 @@
+---
+import { ViewTransitions } from "astro:transitions";
+import HeaderLayout from "@layouts/HeaderLayout.astro";
+import ScrollTopButton from "@shared/components/ScrollTopButton.astro";
+import "./../styles/styles.scss";
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+}
+
+const {
+  title = "NotiWürth - Información Global de SIPE",
+  description = "NotiWürth - Información Global de SIPE",
+  image,
+} = Astro.props;
+---
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+
+    <!-- SEO -->
+    <meta name="description" content={description} />
+    <meta name="author" content={"Área de IT Würth Perú"} />
+
+    <!-- OG Metatags -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+
+    <!-- Required -->
+    <title>{title}</title>
+
+    <ViewTransitions />
+  </head>
+  <body>
+    <HeaderLayout />
+     <main class="py-10 mx-auto flex-grow w-full ">
+        <slot />
+    </main>
+
+    <ScrollTopButton />
+  </body>
+</html>

@@ -1,0 +1,60 @@
+---
+import MainLayout from "@layouts/MainLayout.astro";
+import Section from "@components/Section.astro";
+import SectionTitle from "@components/SectionTitle.astro";
+
+import {
+  CatalogBrochure,
+  PromotionBrochure,
+  ConcentratedBrochure,
+  MasterFiveBrochure,
+  Brochures,
+  IncorporationForDivision,
+  Incorporations,
+  Certifications
+  
+} from "./../shared/consts/brochure";
+
+const title = "NotiWürth - Información Global de SIPE";
+
+const catalog = CatalogBrochure;
+const promotions = PromotionBrochure;
+const concentrate = ConcentratedBrochure;
+const masterfive = MasterFiveBrochure
+const brochures = Brochures;
+const incorporationDivision = IncorporationForDivision
+const incorporations = Incorporations
+const certifications = Certifications
+---
+
+<MainLayout title={title}>
+  <Section
+    id="catalog"
+    title="catálogo - placas"
+    description="There are many variations of passages of Lorem Ipsum available"
+    items={catalog}
+  />
+  
+  <SectionTitle
+    id="promotions"
+    title="promociones"
+    description="Estas son nuestras promociones vigentes para nuestros queridos clientes dependiendo que división les pertenezca"
+  />
+  <Section items={promotions} background="#F5F5F5" />
+  <Section
+    items={concentrate}
+    title="concentrado incorporaciones"
+    subtitle="2024"
+  />
+  
+  <SectionTitle id="masterfive" title="master five" style="fancy" />
+  <Section items={masterfive} itemsAlign="left" />  
+  <SectionTitle id="brochures" title="brochures" style="fancy" />
+  <Section items={brochures} small={true}  />
+  <SectionTitle id="incorporations" title="incorporaciones" style="fancy" />
+  <Section items={incorporationDivision} small={true} removeBottom={true} />
+  <Section items={incorporations} small={true}  />
+  <SectionTitle id="certifications" title="certificaciones" />
+  <Section items={certifications} showButton={true} />
+ 
+</MainLayout>

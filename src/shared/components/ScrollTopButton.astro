@@ -1,0 +1,21 @@
+<button
+    id="scroll-to-top"
+    class="fixed bottom-4 right-4 hidden bg-sky-500 text-white p-3 rounded-full shadow-lg hover:bg-sky-600 transition-opacity duration-300"
+>
+    <!-- ↑ -->
+     <i class="icon-interface-arrow-top"></i>
+</button>
+<script>
+    document.addEventListener('scroll', function() {
+      const button = document.getElementById('scroll-to-top');
+      if (window.scrollY > 200) {
+        button?.classList.remove('hidden');
+      } else {
+        button?.classList.add('hidden');
+      }
+    });
+
+    document.getElementById('scroll-to-top')?.addEventListener('click', function() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
